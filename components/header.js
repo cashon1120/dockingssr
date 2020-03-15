@@ -1,0 +1,217 @@
+import React, {Component} from 'react';
+import Link from 'next/link';
+import $ from 'jquery'
+import intl from '../utils/intl'
+
+import {throttle, getOs, bodyScrollTo} from '../utils/util'
+// import styles from './header.scss';
+
+const Logo = '/images/xm-logo.png';
+const LogoBlack = '/images/xm-logo-black.png';
+
+
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      windhowHeight: null,
+      scrollEle: null,
+      isOpen: false,
+      isHome: false,
+      showHeader: true,
+      lastScrollTop: null,
+      logo: Logo
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        windhowHeight: $(window).height(),
+        scrollEle: document.getElementById('scrollDom')
+      }, () => {
+        const {scrollEle} = this.state
+        if (scrollEle) {
+          this.handlerBindEvent(this.state.scrollEle, throttle(this.handlerScroll, 200), {passive: false})
+        }
+      })
+    }, 200);
+
+    this.setIndexHead()
+    $(document).on('scroll', throttle(this.headerToggleShow, 200))
+  }
+
+  changeLang = (lang) => {
+    localStorage.setItem('lang', lang)
+    window
+      .location
+      .reload()
+  }
+
+  handlerScroll = (e) => {
+    const {windhowHeight} = this.state
+    if ($(document).scrollTop() < windhowHeight) {
+      return
+    }
+    e.preventDefault();
+    e.stopPropagation();
+    const direction = (e.detail > 0 || e.wheelDelta < 0)
+      ? false
+      : false
+    this.setState({showHeader: direction})
+  }
+
+  headerToggleShow = () => {
+    const {lastScrollTop} = this.state
+    let direction = $(document).scrollTop() > lastScrollTop
+      ? false
+      : true
+    this.setState({
+      showHeader: direction,
+      lastScrollTop: $(document).scrollTop()
+    })
+  }
+
+  // 绑定滚动事件
+  handlerBindEvent(dom, fn, params) {
+    this.handlerUnbindEvent(dom, fn)
+    const eventName = getOs() === 'Firefox'
+      ? 'DOMMouseScroll'
+      : 'mousewheel'
+    dom.addEventListener(eventName, fn, params)
+  }
+
+  // 解触滚动事件
+  handlerUnbindEvent(dom, fn) {
+    const eventName = getOs() === 'Firefox'
+      ? 'DOMMouseScroll'
+      : 'mousewheel'
+    dom.removeEventListener(eventName, fn)
+  }
+
+  headerToggleShow = () => {
+    const {lastScrollTop, showHeader} = this.state
+    if ($(document).scrollTop() < 80 && !showHeader) {
+      this.setState({showHeader: true})
+      return
+    }
+    let direction = $(document).scrollTop() > lastScrollTop
+      ? false
+      : true
+    this.setState({
+      showHeader: direction,
+      lastScrollTop: $(document).scrollTop()
+    })
+  }
+
+  setIndexHead() {
+    const {pathname} = window.location
+    const pageState = pathname === '/' || pathname === '/services'
+    const isHome = pageState
+      ? true
+      : false
+    const logo = pageState
+      ? Logo
+      : LogoBlack
+    this.setState({isHome, logo})
+  }
+
+  handlerOpen() {
+    const {isOpen} = this.state
+    console.log(isOpen)
+    this.setState({
+      isOpen: !isOpen
+    }, () => {
+      setTimeout(() => {
+        this.setIndexHead()
+      }, 200);
+      
+    })
+  }
+
+  handlerShowContact = () => {
+    const contactDom = $('#contact')
+    bodyScrollTo('html,body', contactDom.offset().top, () => {})
+  }
+
+  render() {
+    const {isOpen, isHome, showHeader, logo} = this.state
+    const address = intl.get('contact.content')
+    const nav = intl.get('header.nav')
+    const language = intl.currentLocale
+    const {changeLang} = this.props
+    return (
+      <header className={showHeader
+        ? 'show'
+        : 'hide'}>
+        <div
+          className={isHome
+          ? "container index-header"
+          : "container"}>
+          <div className="flex-container header-container">
+            <div className="flex-1">
+              <img src={logo} className="logo" alt="logo"/>
+
+            </div>
+            <div style={{
+              paddingRight: 25
+            }}>
+              {intl.currentLocale === 'zh'
+                ? <a href="#" onClick={() => changeLang('en')}>English</a>
+                : <a href="#" onClick={() => changeLang('zh')}>Chinese</a>}
+            </div>
+            <div>
+              <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>
+                {intl.get('header.contact')}
+              </span>
+            </div>
+            <div>
+              <span
+                className={isOpen
+                ? 'nav-icon open'
+                : 'nav-icon'}
+                onClick={() => this.handlerOpen()}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <nav
+          className={isOpen
+          ? 'open'
+          : null}
+          onClick={() => this.handlerOpen()}>
+          <ul>
+            <li>
+              <Link href='/'><a>{nav[0]}</a></Link>
+            </li>
+            <li>
+              <Link href='/work'><a>{nav[1]}</a></Link>
+            </li>
+            <li>
+              <Link href='/services'><a>{nav[2]}</a></Link>
+            </li>
+            <li>
+              <Link href='/blog'><a>{nav[3]}</a></Link>
+            </li>
+            <li>
+              <a href='#contact'>{nav[4]}</a>
+            </li>
+          </ul>
+          <div className="address">
+          <p>{language === 'zh' ? '中国大陆地区' : 'China Mainland Tel'}: <br/>{address.phone}</p>
+          <p>{language === 'zh' ? '北美电话' : 'North American Tel'}: {address.naphone}</p>
+            <p>{language === 'zh' ? '微信' : 'Wechat'}: {address.wechat}</p>
+            <p>{language === 'zh' ? '邮箱' : 'E-mail'}: {address.email}</p>
+            <p>{language === 'zh' ? '地址' : 'Address'}: {address.address}</p>
+          </div>
+        </nav>
+      </header>
+
+    );
+  }
+}
+
+export default Header;
