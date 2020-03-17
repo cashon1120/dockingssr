@@ -3,7 +3,7 @@ const zh = {
     "showmore": "查看更多",
     "showdetail": "查看详情",
     "api": "http://47.111.186.62:8080",
-    "responsemsg": "我们收到啦"
+    "responsemsg": "好的 我们已经收到您的想法,马上会有专员和您对接"
   },
 
   "header": {
@@ -122,7 +122,16 @@ const zh = {
       "id": 8,
       "value": "人工智能"
     }],
-    "data": [{
+    "data": [ 
+      {
+      "id": 3,
+      "title": "卡片日记",
+      "content": "随手记录生活点滴 ",
+      "videoImg": "/images/video-img-3.png",
+      "imgSrc": "/images/case-3.jpg",
+      "videoSrc": "/images/mp4-3.mp4",
+      "listImgSrc": "/images/case-list-3.png"
+    },{
       "id": 1,
       "title": "急先蜂外卖",
       "content": "本土特色美食外卖，急速送达",
@@ -138,14 +147,6 @@ const zh = {
       "imgSrc": "/images/case-2.png",
       "videoSrc": "/images/mp4-2.mp4",
       "listImgSrc": "/images/case-list-2.png"
-    }, {
-      "id": 3,
-      "title": "卡片日记",
-      "content": "随手记录生活点滴 ",
-      "videoImg": "/images/video-img-3.png",
-      "imgSrc": "/images/case-3.jpg",
-      "videoSrc": "/images/mp4-3.mp4",
-      "listImgSrc": "/images/case-list-3.png"
     }, {
       "id": 4,
       "title": "园畅",
@@ -303,7 +304,7 @@ const zh = {
   },
 
   "contact": {
-    "title1": "有想法有缺个程序员了吗",
+    "title1": "有想法就缺个程序员了吗",
     "title2": "来和我们打个招呼，聊聊吧",
     "form": {
       "nikename": {
@@ -339,5 +340,7 @@ const zh = {
     "title": "思想",
     "desc": "实用程序与客户合作，以​​设计和开发自定义移动应用程序，平台和体验。我们与众多客户合作，从全球品牌和媒体资产到创新的初创企业和投资企业。"
   }
+
 }
+
 export default zh

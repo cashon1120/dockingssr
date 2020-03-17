@@ -42,10 +42,8 @@ class Swiper extends Component {
       const {windowHeight} = this.state
       if ($(document).scrollTop() >= windowHeight) {
         this.setState({isFirstScreen: false})
-
       }
     })
-
   }
 
   componentWillUnmount = () => {

@@ -71,7 +71,7 @@ class Footer extends Component {
     const {loading, visible, modalWidth} = this.state
     const {getFieldDecorator} = this.props.form;
     return (
-      <footer>
+      <footer className="footer">
         <div className="card-container" id="contact">
           <h1 className="title">{data.title1}
             <br/>{data.title2}</h1>
@@ -200,7 +200,10 @@ class Footer extends Component {
               </div>
             </div>
           </div>
-
+          <div className="copyright">
+            Copyright©2020 DOCKING LTD. All Right Reserved 版权所有：成都入坞科技有限公司 <a href="http://www.beian.miit.gov.cn">蜀ICP备20006007号</a>
+          </div>
+          
         </div>
 
       </footer>

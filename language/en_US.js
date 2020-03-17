@@ -3,7 +3,7 @@ const en = {
     "showmore": "show more",
     "showdetail": "show detail",
     "api": "http://47.111.186.62:8080/park/app/home/add_customer",
-    "responsemsg": "我们收到啦"
+    "responsemsg": "OK, we have received your ideas, and a commissioner will meet you soon"
   },
 
   "header": {
@@ -124,6 +124,14 @@ const en = {
       "value": "Artificial intelligence"
     }],
     "data": [{
+      "id": 3,
+      "title": "卡片日记",
+      "content": "随手记录生活点滴 ",
+      "videoImg": "/images/video-img-3.png",
+      "imgSrc": "/images/case-3.jpg",
+      "videoSrc": "/images/mp4-3.mp4",
+      "listImgSrc": "/images/case-list-3.png"
+    }, {
       "id": 1,
       "title": "急先外卖蜂",
       "content": "本土特色美食外卖，急速送达",
@@ -139,14 +147,6 @@ const en = {
       "imgSrc": "/images/case-2.png",
       "videoSrc": "/images/mp4-2.mp4",
       "listImgSrc": "/images/case-list-2.png"
-    }, {
-      "id": 3,
-      "title": "卡片日记",
-      "content": "随手记录生活点滴 ",
-      "videoImg": "/images/video-img-3.png",
-      "imgSrc": "/images/case-3.jpg",
-      "videoSrc": "/images/mp4-3.mp4",
-      "listImgSrc": "/images/case-list-3.png"
     }, {
       "id": 4,
       "title": "园畅",

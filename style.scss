@@ -1,6 +1,6 @@
 body {
   font-family: 'Source Sans Pro',sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #4b4a4b;
 }
@@ -19,8 +19,8 @@ body {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
+  font-smoothing: antialiased;
+  text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -34,7 +34,7 @@ body {
 a,
 i {
   text-decoration: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 
@@ -371,7 +371,6 @@ header {
     color: #4b4a4b;
   }
   .container {
-    background: #fff;
     @media(min-width:1920px){
       width: 100%;
     }
@@ -410,10 +409,11 @@ header {
 
 nav {
   &.open {
+    display: block;
     opacity: 1;
     visibility: visible;
   }
-
+  display: none;
   visibility: hidden;
   position: fixed;
   opacity: 0;
@@ -657,7 +657,7 @@ footer {
     padding: 50px 30px;
 
     @media(min-width: 768px) {
-      padding: 100px 80px;
+      paddding: 100px 80px 80px 80px;
     }
   }
 
@@ -710,7 +710,7 @@ footer {
     margin-bottom: 0 !important;
   }
 
-  ::-webkit-input-placeholder {
+  ::input-placeholder {
     color: #999;
   }
 
@@ -1977,4 +1977,53 @@ footer {
     }
   }
 
+}
+
+
+.loading{
+  width: 150px;
+  height: 15px;
+  margin: 0 auto;
+  margin-top:100px;
+  text-align: center;
+}
+.loading span{
+  display: inline-block;
+  width: 15px;
+  height: 100%;
+  margin-right: 5px;
+  background: lightgreen;
+  animation: load 1.04s ease infinite;
+}
+.loading span:last-child{
+  margin-right: 0px; 
+}
+@keyframes load{
+  0%{
+      opacity: 1;
+  }
+  100%{
+      opacity: 0;
+  }
+}
+.loading span:nth-child(1){
+  animation-delay:0.13s;
+}
+.loading span:nth-child(2){
+  animation-delay:0.26s;
+}
+.loading span:nth-child(3){
+  animation-delay:0.39s;
+}
+.loading span:nth-child(4){
+  animation-delay:0.52s;
+}
+.loading span:nth-child(5){
+  animation-delay:0.65s;
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 14px;
 }

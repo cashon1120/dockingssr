@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "prd": "NODE_ENV=production pm2 start pm2.conf.json"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "antd": "^3.21.4",
     "babel-plugin-import": "^1.12.0",
+    "babel-plugin-styled-components": "^1.10.7",
     "ioredis": "^4.14.0",
     "isomorphic-unfetch": "^3.0.0",
     "jquery": "^3.4.1",
@@ -21,6 +23,10 @@
     "node-sass": "^4.13.1",
     "react": "16.9.0",
     "react-dom": "16.9.0",
+    "react-lazyload": "^2.6.5",
     "react-redux": "^7.1.0"
+  },
+  "devDependencies": {
+    "expose-loader": "^0.7.5"
   }
 }

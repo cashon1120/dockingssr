@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import Swiper from '../components/swiper'
 import Link from 'next/link';
+import Swiper from '../components/swiper'
 import intl from '../utils/intl'
 import Footer from '../components/footer'
 import Intrduce from '../components/intrduce'
@@ -71,7 +71,7 @@ class Home extends Component {
             </div>
 
             <div className="service-btn">
-              <Link href="/services" className="btn btn-lg">{intl.get('global.showmore')}</Link>
+              <Link href="/services" className="btn btn-lg"><a>{intl.get('global.showmore')}</a></Link>
             </div>
           </div>
 

@@ -1,19 +1,16 @@
 
 import React from 'react'
-import intl from '../utils/intl'
-import { withRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch';
-import { Pagination, Spin } from 'antd';
+import { Spin } from 'antd';
 import Footer from '../components/footer'
+import {API_URL} from '../config'
 
-
-let size = 10
-const num = 1
 class BlogDetail extends React.Component{
     state = {
         spaData: [],
         loading: false
     }
+
     onChange = (num, size) => {
         this.getData(num, size)
     }
@@ -22,9 +19,8 @@ class BlogDetail extends React.Component{
         this.setState({
             loading: true
         })
-        const res = await fetch(`http://47.111.186.62:8080/park/app/home/list_blog?num=${num}&size=${size}`);
+        const res = await fetch(`/park/app/home/list_blog?num=${num}&size=${size}`);
         const data = await res.json();
-        console.log(data.success)
         if(data.success){
             this.setState({
                 spaData: data.data.list,
@@ -36,7 +32,6 @@ class BlogDetail extends React.Component{
     render(){
         const {data} = this.props.data.data
         const {loading} = this.state
-
         return <div className="main blog-main">
              <Spin spinning={loading}>
                 <div className="blog-wrapper">
@@ -50,10 +45,6 @@ class BlogDetail extends React.Component{
                         </div>
                         <div className="blog-content" dangerouslySetInnerHTML={{ __html: data.content }}></div>
                     </div>
-                    
-                   
-                            
-                    
                 </div>
             </Spin>
             <Footer/>
@@ -61,17 +52,13 @@ class BlogDetail extends React.Component{
     }
 }
 
-
 BlogDetail.getInitialProps = async function (props) {
     const id = props.ctx.query.id
-    const res = await fetch(`http://47.111.186.62:8080/park/app/home/details_blog?id=${id}`);
+    const res = await fetch(`${API_URL}/park/app/home/details_blog?id=${id}`);
     const data = await res.json();
     return {
         data: {data}
     }
 }
-
-
-
 
 export default BlogDetail;

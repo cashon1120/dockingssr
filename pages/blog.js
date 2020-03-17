@@ -5,6 +5,7 @@ import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import { Pagination, Spin } from 'antd';
 import Footer from '../components/footer'
+import {API_URL} from '../config'
 
 
 let size = 10
@@ -22,9 +23,8 @@ class BlogList extends React.Component{
         this.setState({
             loading: true
         })
-        const res = await fetch(`http://47.111.186.62:8080/park/app/home/list_blog?num=${num}&size=${size}`);
+        const res = await fetch(`/park/app/home/list_blog?num=${num}&size=${size}`);
         const data = await res.json();
-        console.log(data.success)
         if(data.success){
             this.setState({
                 spaData: data.data.list,
@@ -37,7 +37,6 @@ class BlogList extends React.Component{
         const {data} = this.props.data
         const {spaData, loading} = this.state
         const result = spaData.length > 0 ? spaData : data.data.list
-        console.log(data.data)
         return <div className="main blog-main">
            <div className="blog-wrapper">
                 <div className="title">
@@ -66,17 +65,11 @@ class BlogList extends React.Component{
         </div>
     }
 }
-
-
 BlogList.getInitialProps = async function () {
-    const res = await fetch(`http://47.111.186.62:8080/park/app/home/list_blog?num=${num}&size=${size}`);
+    const res = await fetch(`${API_URL}/park/app/home/list_blog?num=${num}&size=${size}`);
     const data = await res.json();
     return {
         data: {data}
     }
 }
-
-
-
-
 export default BlogList;

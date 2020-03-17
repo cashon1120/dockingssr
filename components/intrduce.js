@@ -1,18 +1,9 @@
-/*
- * @Author: your name
- * @Date: 2020-03-11 21:35:55
- * @LastEditTime: 2020-03-11 21:36:55
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: /next-github-init/pages/intrduce/intrduce.js
- */
 import React, {Component, Fragment} from 'react';
 import {Row, Col} from 'antd'
 import $ from 'jquery'
+import LazyLoadComponent from '../components/LazyLoad'
 import intl from '../utils/intl'
 import {throttle} from '../utils/util'
-
-
 class Intrduce extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +53,7 @@ class Intrduce extends Component {
                   style={{
                   height: itemHeight
                 }}>
-                  <img src={item.imgSrc} alt={item.titme}/>
+                  <LazyLoadComponent src={item.imgSrc} alt={item.title} />
                   <h2>{item.title}</h2>
                   {item.text}
                 </Col>
@@ -80,7 +71,7 @@ class Intrduce extends Component {
                   style={{
                   height: itemHeight
                 }}>
-                  <img src={item.imgSrc} alt={item.titme}/>
+                  <LazyLoadComponent src={item.imgSrc} alt={item.title} />
                   <h2>{item.title}</h2>
                   {item.text}
                 </Col>

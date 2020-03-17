@@ -1,13 +1,6 @@
-/*
- * @Author: your name
- * @Date: 2020-03-11 23:22:40
- * @LastEditTime: 2020-03-11 23:23:54
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: /next-github-init/pages/work.js
- */
 import React, {Component, Fragment} from 'react';
 import intl from '../utils/intl'
+import LazyLoadComponent from '../components/LazyLoad'
 import {Row, Col} from 'antd'
 import Footer from '../components/footer'
 
@@ -27,15 +20,13 @@ class Work extends Component {
                 <a href="/work">{item.value}</a>
               </div>)}
             </div>
-
             <div className="work-list-container">
-
               <Row gutter={[30, 50]}>
                 {(data || []).map(item => <Col sm={24} md={12} key={item.title}>
                   <div className="work-item">
                     <div className="img-wrapper">
                       <a href="#work">{item.content}</a>
-                      <img src={item.listImgSrc} alt=""/>
+                      <LazyLoadComponent src={item.listImgSrc} alt={item.title}/>
                     </div>
                     <div className="works-landing__description">
                       <h5>
@@ -45,12 +36,9 @@ class Work extends Component {
                         {item.content}
                       </div>
                     </div>
-
                   </div>
                 </Col>)}
-
               </Row>
-
             </div>
           </div>
         </div>

@@ -1,14 +1,9 @@
 import React, {Component} from 'react';
 import Link from 'next/link';
-import $ from 'jquery'
 import intl from '../utils/intl'
-
 import {throttle, getOs, bodyScrollTo} from '../utils/util'
-// import styles from './header.scss';
-
 const Logo = '/images/xm-logo.png';
 const LogoBlack = '/images/xm-logo-black.png';
-
 
 class Header extends Component {
   constructor(props) {
@@ -17,17 +12,19 @@ class Header extends Component {
       windhowHeight: null,
       scrollEle: null,
       isOpen: false,
-      isHome: false,
       showHeader: true,
       lastScrollTop: null,
-      logo: Logo
+      logo: Logo,
+      pathName: ''
     };
   }
 
   componentDidMount() {
-    setTimeout(() => {
+    this.setIndexHead(window.location.href)
+    window.addEventListener('load', () => {
+      document.addEventListener('scroll', throttle(this.headerToggleShow, 200))
       this.setState({
-        windhowHeight: $(window).height(),
+        windhowHeight: window.innerHeight,
         scrollEle: document.getElementById('scrollDom')
       }, () => {
         const {scrollEle} = this.state
@@ -35,12 +32,8 @@ class Header extends Component {
           this.handlerBindEvent(this.state.scrollEle, throttle(this.handlerScroll, 200), {passive: false})
         }
       })
-    }, 200);
-
-    this.setIndexHead()
-    $(document).on('scroll', throttle(this.headerToggleShow, 200))
+    })
   }
-
   changeLang = (lang) => {
     localStorage.setItem('lang', lang)
     window
@@ -50,7 +43,8 @@ class Header extends Component {
 
   handlerScroll = (e) => {
     const {windhowHeight} = this.state
-    if ($(document).scrollTop() < windhowHeight) {
+    const scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+    if (scrollTop < windhowHeight) {
       return
     }
     e.preventDefault();
@@ -63,12 +57,13 @@ class Header extends Component {
 
   headerToggleShow = () => {
     const {lastScrollTop} = this.state
-    let direction = $(document).scrollTop() > lastScrollTop
+    const scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+    let direction = scrollTop > lastScrollTop
       ? false
       : true
     this.setState({
       showHeader: direction,
-      lastScrollTop: $(document).scrollTop()
+      lastScrollTop: scrollTop.scrollTop()
     })
   }
 
@@ -91,51 +86,48 @@ class Header extends Component {
 
   headerToggleShow = () => {
     const {lastScrollTop, showHeader} = this.state
-    if ($(document).scrollTop() < 80 && !showHeader) {
+    const scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+    if (scrollTop < 80 && !showHeader) {
       this.setState({showHeader: true})
       return
     }
-    let direction = $(document).scrollTop() > lastScrollTop
+    let direction = scrollTop > lastScrollTop
       ? false
       : true
     this.setState({
       showHeader: direction,
-      lastScrollTop: $(document).scrollTop()
+      lastScrollTop: scrollTop
     })
   }
 
-  setIndexHead() {
-    const {pathname} = window.location
-    const pageState = pathname === '/' || pathname === '/services'
-    const isHome = pageState
-      ? true
-      : false
-    const logo = pageState
-      ? Logo
-      : LogoBlack
-    this.setState({isHome, logo})
+  setIndexHead = pathname => {
+    if(pathname.indexOf('#') > 0){
+      return
+    }
+    pathname = pathname.split('/')[3]
+    const isHome = pathname === '' || pathname === 'services'
+    const pathName = isHome ? 'index' : 'sub'
+    const logo = isHome ? Logo : LogoBlack
+    this.setState({pathName, logo})
   }
 
-  handlerOpen() {
+  handlerOpen(e) {
     const {isOpen} = this.state
-    console.log(isOpen)
+    if(e && e.target.tagName === 'A'){
+      this.setIndexHead(e.target.href)
+    }
     this.setState({
       isOpen: !isOpen
-    }, () => {
-      setTimeout(() => {
-        this.setIndexHead()
-      }, 200);
-      
     })
   }
 
   handlerShowContact = () => {
-    const contactDom = $('#contact')
+    const contactDom = document.getElementById('contact')
     bodyScrollTo('html,body', contactDom.offset().top, () => {})
   }
 
   render() {
-    const {isOpen, isHome, showHeader, logo} = this.state
+    const {isOpen, pathName, showHeader, logo} = this.state
     const address = intl.get('contact.content')
     const nav = intl.get('header.nav')
     const language = intl.currentLocale
@@ -145,13 +137,10 @@ class Header extends Component {
         ? 'show'
         : 'hide'}>
         <div
-          className={isHome
-          ? "container index-header"
-          : "container"}>
+          className={`container ${pathName}-header`}>
           <div className="flex-container header-container">
             <div className="flex-1">
               <img src={logo} className="logo" alt="logo"/>
-
             </div>
             <div style={{
               paddingRight: 25
@@ -182,7 +171,7 @@ class Header extends Component {
           className={isOpen
           ? 'open'
           : null}
-          onClick={() => this.handlerOpen()}>
+          onClick={e => this.handlerOpen(e)}>
           <ul>
             <li>
               <Link href='/'><a>{nav[0]}</a></Link>
@@ -191,10 +180,10 @@ class Header extends Component {
               <Link href='/work'><a>{nav[1]}</a></Link>
             </li>
             <li>
-              <Link href='/services'><a>{nav[2]}</a></Link>
+              <a href='/services'>{nav[2]}</a>
             </li>
             <li>
-              <Link href='/blog'><a>{nav[3]}</a></Link>
+              <a href='/blog'>{nav[3]}</a>
             </li>
             <li>
               <a href='#contact'>{nav[4]}</a>
@@ -209,7 +198,6 @@ class Header extends Component {
           </div>
         </nav>
       </header>
-
     );
   }
 }
