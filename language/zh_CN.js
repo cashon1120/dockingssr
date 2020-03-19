@@ -16,7 +16,7 @@ const zh = {
   "index": {
     "banner": {
       "h1": "数字体验栩栩如生",
-      "h2": "我们是一家软件咨询公司，专门从事IOS,Android,小程序等平台的软件定制化设计和与开发服务"
+      "h2": "我们是一家专业软件咨询公司，专门从事APP,小程序等平台的软件定制化设计和与开发服务"
     },
 
     "sevices": {
@@ -57,9 +57,9 @@ const zh = {
         "imgSrc": "/images/Icon_31.png",
         "text": "我们的软件开发人员会创建专门为您的项目编写的代码。没有懒惰的现成东西。"
       }, {
-        "title": "锁，库存和桶",
+        "title": "IP拥有权",
         "imgSrc": "/images/Icon_32.png",
-        "text": "知识产权拥有通过在sprint和迭代中开发软件解决方案，它不断适应成功-》通过在sprint中迭代开发软件，产品逐渐走向成功。"
+        "text": "您会获得任何为您开发软件的完整知识产权。"
       }, {
         "title": "不断发展的战略",
         "imgSrc": "/images/Icon_34.png",
@@ -67,19 +67,19 @@ const zh = {
       }, {
         "title": "敏捷工作",
         "imgSrc": "/images/Icon_43.png",
-        "text": "通过在sprint和迭代中开发软件解决方案，它不断适应成功。"
+        "text": "我们建造的所有东西都是由我们办事处的专家建造的。我们不需要外包。并且团队通过在Sprint和迭代中开发，使产品逐渐走向成功。"
       }, {
-        "title": "破解团队",
+        "title": "增长黑客",
         "imgSrc": "/images/Icon_35.png",
-        "text": "我们是一支经验丰富的专家团队。每个人都是专家，专注于他们的事情，但要一起工作。-》我们的工程师们都是狂热的编程爱好者，他们喜欢专注研究每个细节"
+        "text": "我们的工程师们都是狂热的编程爱好者，对代码和视觉设计有极致严苛的标准和自律性，我们期待有挑战性的项目和客户的高要求"
       }, {
-        "title": "专业知识",
+        "title": "专注华人服务",
         "imgSrc": "/images/Icon_37.png",
-        "text": "我们建造的所有东西都是由我们办事处的专家建造的。我们不需要或不想外包。"
+        "text": "我们的团队皆从美国TOP20计算机名府毕业，从12年开始即为海外华人提供软件资讯服务，上千项目经验平稳快把握客户核心重点"
       }, {
         "title": "风险投资青睐",
         "imgSrc": "/images/Icon_36.png",
-        "text": "我们有经验丰富的前vc从业人员，从提升技术壁垒与潜在价值角度为您出谋划策铺平融资道路。"
+        "text": "我们有经验丰富的前VC从业人员，从提升技术壁垒与潜在价值角度为您出谋划策铺平融资道路，与您一起制定有效的技术战略，随着您的市场变化而发展。"
       }, {
         "title": "ISO认证",
         "imgSrc": "/images/Icon_39.png",
@@ -122,16 +122,7 @@ const zh = {
       "id": 8,
       "value": "人工智能"
     }],
-    "data": [ 
-      {
-      "id": 3,
-      "title": "卡片日记",
-      "content": "随手记录生活点滴 ",
-      "videoImg": "/images/video-img-3.png",
-      "imgSrc": "/images/case-3.jpg",
-      "videoSrc": "/images/mp4-3.mp4",
-      "listImgSrc": "/images/case-list-3.png"
-    },{
+    "data": [{
       "id": 1,
       "title": "急先蜂外卖",
       "content": "本土特色美食外卖，急速送达",
@@ -147,6 +138,14 @@ const zh = {
       "imgSrc": "/images/case-2.png",
       "videoSrc": "/images/mp4-2.mp4",
       "listImgSrc": "/images/case-list-2.png"
+    }, {
+      "id": 3,
+      "title": "卡片日记",
+      "content": "随手记录生活点滴 ",
+      "videoImg": "/images/video-img-3.png",
+      "imgSrc": "/images/case-3.jpg",
+      "videoSrc": "/images/mp4-3.mp4",
+      "listImgSrc": "/images/case-list-3.png"
     }, {
       "id": 4,
       "title": "园畅",
@@ -304,7 +303,7 @@ const zh = {
   },
 
   "contact": {
-    "title1": "有想法就缺个程序员了吗",
+    "title1": "有想法有缺个程序员了吗",
     "title2": "来和我们打个招呼，聊聊吧",
     "form": {
       "nikename": {
@@ -323,10 +322,10 @@ const zh = {
     "content": {
       "name": "我们是成都入坞科技有限公司",
       "phone": "+(86)13086662830",
-      "naphone": "9495723385",
+      "naphone": "+(001)9495723385",
       "wechat": "dockingtech",
-      "email": "info@docking.net.cn",
-      "address": "成都新世纪环球中心S1区1638室"
+      "email": "info@dockingtech.com",
+      "address": "中国自由贸易成都高新试验区新世纪环球中心S1区1638室"
     },
     "img": "/images/code.jpg",
     "downLoadTxt": "下载二维码"

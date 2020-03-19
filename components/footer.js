@@ -201,7 +201,8 @@ class Footer extends Component {
             </div>
           </div>
           <div className="copyright">
-            Copyright©2020 DOCKING LTD. All Right Reserved 版权所有：成都入坞科技有限公司 <a href="http://www.beian.miit.gov.cn">蜀ICP备20006007号</a>
+            Copyright©2020 DOCKING LTD. All Right Reserved 版权所有：成都入坞科技有限公司 <a href="http://www.beian.miit.gov.cn">蜀ICP备20006007号</a> <br/>
+            成都入坞科技有限公司是一家专业软件咨询公司, 长期专注于移动端APP, 小程序和PC端各类定制化软件开发
           </div>
           
         </div>
