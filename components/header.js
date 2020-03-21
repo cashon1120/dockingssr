@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Link from 'next/link';
 import intl from '../utils/intl'
+import $ from 'jquery'
 import {throttle, getOs, bodyScrollTo} from '../utils/util'
 const Logo = '/images/xm-logo.png';
 const LogoBlack = '/images/xm-logo-black.png';
@@ -122,7 +123,7 @@ class Header extends Component {
   }
 
   handlerShowContact = () => {
-    const contactDom = document.getElementById('contact')
+    const contactDom = $('#contact')
     bodyScrollTo('html,body', contactDom.offset().top, () => {})
   }
 

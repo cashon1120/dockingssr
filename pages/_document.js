@@ -11,6 +11,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script src="chart.js"></script>
         </body>
       </Html>
     )
