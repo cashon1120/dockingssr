@@ -12,6 +12,8 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           <script src="chart.js"></script>
+          <script src="baidu.js"></script>
+          {/* <script src="53kf.js"></script> */}
         </body>
       </Html>
     )

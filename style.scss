@@ -2027,4 +2027,14 @@ footer {
   padding-top: 30px;
   font-size: 14px;
   line-height: 1.5;
+  img{
+    width: 14px;
+    position: relative;
+    top: -1px;
+    margin-left: 5px;
+  }
+}
+
+.modal-logo__inner{
+  display: none !important;
 }

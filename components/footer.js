@@ -201,7 +201,7 @@ class Footer extends Component {
             </div>
           </div>
           <div className="copyright">
-            Copyright©2020 DOCKING LTD. All Right Reserved 版权所有：成都入坞科技有限公司 <a href="http://www.beian.miit.gov.cn">蜀ICP备20006007号</a> <br/>
+            Copyright©2020 DOCKING LTD. All Right Reserved 版权所有：成都入坞科技有限公司 <a href="http://www.beian.miit.gov.cn">蜀ICP备20006007号</a> <a target="_blank" href=" " style={{textDecoration: 'none', display: 'inline-block'}}>< img src="/images/icp.png" />川公网安备 51010702002132号</a > <br/>
             成都入坞科技有限公司是一家专业软件咨询公司, 长期专注于移动端APP, 小程序和PC端各类定制化软件开发，我们为iOS，Android和混合移动平台开发解决方案，每种解决方案都能满足不同的细分市场和特定的客户需求。
           </div>
           

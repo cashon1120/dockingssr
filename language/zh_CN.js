@@ -16,7 +16,7 @@ const zh = {
   "index": {
     "banner": {
       "h1": "数字体验栩栩如生",
-      "h2": "我们是一家专业软件咨询公司，专门从事APP,小程序等平台的软件定制化设计和与开发服务"
+      "h2": "我们是一家专业软件咨询公司，专门从事APP,小程序等平台的软件定制化设计与开发服务"
     },
 
     "sevices": {
@@ -123,6 +123,14 @@ const zh = {
       "value": "人工智能"
     }],
     "data": [{
+      "id": 3,
+      "title": "卡片日记",
+      "content": "随手记录生活点滴 ",
+      "videoImg": "/images/video-img-3.png",
+      "imgSrc": "/images/case-3.jpg",
+      "videoSrc": "/images/mp4-3.mp4",
+      "listImgSrc": "/images/case-list-3.png"
+    },{
       "id": 1,
       "title": "急先蜂外卖",
       "content": "本土特色美食外卖，急速送达",
@@ -138,14 +146,6 @@ const zh = {
       "imgSrc": "/images/case-2.png",
       "videoSrc": "/images/mp4-2.mp4",
       "listImgSrc": "/images/case-list-2.png"
-    }, {
-      "id": 3,
-      "title": "卡片日记",
-      "content": "随手记录生活点滴 ",
-      "videoImg": "/images/video-img-3.png",
-      "imgSrc": "/images/case-3.jpg",
-      "videoSrc": "/images/mp4-3.mp4",
-      "listImgSrc": "/images/case-list-3.png"
     }, {
       "id": 4,
       "title": "园畅",
@@ -303,7 +303,7 @@ const zh = {
   },
 
   "contact": {
-    "title1": "有想法有缺个程序员了吗",
+    "title1": "有想法就缺个程序员了吗",
     "title2": "来和我们打个招呼，聊聊吧",
     "form": {
       "nikename": {
@@ -311,7 +311,7 @@ const zh = {
         "message": "请输入您的名称"
       },
       "email": {
-        "label": "邮箱",
+        "label": "邮箱或者微信",
         "message": "请输入正确的邮箱"
       },
       "desc": {
